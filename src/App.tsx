@@ -1,25 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import axios from "axios";
+
+export interface FilterMenuInterface  {
+  isMenuOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export interface driversInterface {
+  Profile: string;
+  Driver_Name: string;
+  Truck_Type: string;
+  Address: string;
+  Assigned_Truck: string;
+  Status: string;
+};
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [jsonData, setJsonData] = useState<driversInterface[]>([]);
+
+  
+
+  // laoding all Drivers Data once app load
+  useEffect(() => {
+    const fetchJsonData = async () => {
+      try {
+        const response = await axios.get("drivers.json");
+        const data = response.data;
+        setJsonData(data);
+      } catch (error) {
+        console.error("Error loading JSON data:", error);
+      }
+    };
+
+    fetchJsonData();
+  }, []);
+
+  // filtering data based on query 
+  useEffect(()=>{
+
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Dashboard
+        jsonData={jsonData}
+        setJsonData={setJsonData}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      />
+    </>
   );
 }
 
