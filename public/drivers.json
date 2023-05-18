@@ -344,6 +344,54 @@
     "Status": "Available"
   },
   {
+    "Profile": "https://randomuser.me/api/portraits/men/3.jpg",
+    "Driver_Name": "Bob Johnson",
+    "Truck_Type": "Company Driven",
+    "Address": "789 Oak St, City",
+    "Assigned_Truck": "Toyota Tundra",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/4.jpg",
+    "Driver_Name": "Sara Lee",
+    "Truck_Type": "Self Driven",
+    "Address": "321 Maple St, City",
+    "Assigned_Truck": "Honda Ridgeline",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/5.jpg",
+    "Driver_Name": "Tom Brown",
+    "Truck_Type": "Self Driven",
+    "Address": "654 Pine St, City",
+    "Assigned_Truck": "RAM 1500",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/6.jpg",
+    "Driver_Name": "Lisa Taylor",
+    "Truck_Type": "Self Driven",
+    "Address": "987 Cedar St, City",
+    "Assigned_Truck": "Toyota Tundra",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/2.jpg",
+    "Driver_Name": "Jane Smith",
+    "Truck_Type": "Company Driven",
+    "Address": "456 Elm St, City",
+    "Assigned_Truck": "RAM 1500",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/3.jpg",
+    "Driver_Name": "Bob Johnson",
+    "Truck_Type": "Company Driven",
+    "Address": "789 Oak St, City",
+    "Assigned_Truck": "Toyota Tundra",
+    "Status": "Available"
+  },
+  {
     "Profile": "https://randomuser.me/api/portraits/women/15.jpg",
     "Driver_Name": "Sophia Johnson",
     "Truck_Type": "Self Driven",
@@ -358,6 +406,86 @@
     "Address": "654 Pine St, City",
     "Assigned_Truck": "Volvo",
     "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/2.jpg",
+    "Driver_Name": "Jane Smith",
+    "Truck_Type": "Company Driven",
+    "Address": "456 Elm St, City",
+    "Assigned_Truck": "RAM 1500",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/3.jpg",
+    "Driver_Name": "Bob Johnson",
+    "Truck_Type": "Company Driven",
+    "Address": "789 Oak St, City",
+    "Assigned_Truck": "Toyota Tundra",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/1.jpg",
+    "Driver_Name": "John Doe",
+    "Truck_Type": "Company Driven",
+    "Address": "123 Main St, City",
+    "Assigned_Truck": "Honda Ridgeline",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/4.jpg",
+    "Driver_Name": "Sara Lee",
+    "Truck_Type": "Self Driven",
+    "Address": "321 Maple St, City",
+    "Assigned_Truck": "Honda Ridgeline",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/5.jpg",
+    "Driver_Name": "Tom Brown",
+    "Truck_Type": "Self Driven",
+    "Address": "654 Pine St, City",
+    "Assigned_Truck": "RAM 1500",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/6.jpg",
+    "Driver_Name": "Lisa Taylor",
+    "Truck_Type": "Self Driven",
+    "Address": "987 Cedar St, City",
+    "Assigned_Truck": "Toyota Tundra",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/7.jpg",
+    "Driver_Name": "Michael Anderson",
+    "Truck_Type": "Self Driven",
+    "Address": "246 Birch St, City",
+    "Assigned_Truck": "RAM 1500",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/8.jpg",
+    "Driver_Name": "Emily Wilson",
+    "Truck_Type": "Company Driven",
+    "Address": "135 Oak St, City",
+    "Assigned_Truck": "Honda Ridgeline",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/9.jpg",
+    "Driver_Name": "Daniel Clark",
+    "Truck_Type": "Company Driven",
+    "Address": "864 Elm St, City",
+    "Assigned_Truck": "Toyota Tundra",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/10.jpg",
+    "Driver_Name": "Jennifer Davis",
+    "Truck_Type": "Company Driven",
+    "Address": "975 Maple St, City",
+    "Assigned_Truck": "RAM 1500",
+    "Status": "Unavailable"
   },
   {
     "Profile": "https://randomuser.me/api/portraits/women/17.jpg",
@@ -383,7 +511,7 @@
     "Assigned_Truck": "Volvo",
     "Status": "Unavailable"
   },
-  
+
   {
     "Profile": "https://randomuser.me/api/portraits/men/7.jpg",
     "Driver_Name": "David Lee",
@@ -479,5 +607,85 @@
     "Address": "135 Elm St, City",
     "Assigned_Truck": "Volvo",
     "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/2.jpg",
+    "Driver_Name": "Jane Smith",
+    "Truck_Type": "Company Driven",
+    "Address": "456 Elm St, City",
+    "Assigned_Truck": "RAM 1500",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/3.jpg",
+    "Driver_Name": "Bob Johnson",
+    "Truck_Type": "Company Driven",
+    "Address": "789 Oak St, City",
+    "Assigned_Truck": "Toyota Tundra",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/1.jpg",
+    "Driver_Name": "John Doe",
+    "Truck_Type": "Company Driven",
+    "Address": "123 Main St, City",
+    "Assigned_Truck": "Honda Ridgeline",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/2.jpg",
+    "Driver_Name": "Jane Smith",
+    "Truck_Type": "Company Driven",
+    "Address": "456 Elm St, City",
+    "Assigned_Truck": "RAM 1500",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/3.jpg",
+    "Driver_Name": "Bob Johnson",
+    "Truck_Type": "Company Driven",
+    "Address": "789 Oak St, City",
+    "Assigned_Truck": "Toyota Tundra",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/4.jpg",
+    "Driver_Name": "Sara Lee",
+    "Truck_Type": "Self Driven",
+    "Address": "321 Maple St, City",
+    "Assigned_Truck": "Honda Ridgeline",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/5.jpg",
+    "Driver_Name": "Tom Brown",
+    "Truck_Type": "Self Driven",
+    "Address": "654 Pine St, City",
+    "Assigned_Truck": "RAM 1500",
+    "Status": "Available"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/6.jpg",
+    "Driver_Name": "Lisa Taylor",
+    "Truck_Type": "Self Driven",
+    "Address": "987 Cedar St, City",
+    "Assigned_Truck": "Toyota Tundra",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/women/2.jpg",
+    "Driver_Name": "Jane Smith",
+    "Truck_Type": "Company Driven",
+    "Address": "456 Elm St, City",
+    "Assigned_Truck": "RAM 1500",
+    "Status": "Unavailable"
+  },
+  {
+    "Profile": "https://randomuser.me/api/portraits/men/3.jpg",
+    "Driver_Name": "Bob Johnson",
+    "Truck_Type": "Company Driven",
+    "Address": "789 Oak St, City",
+    "Assigned_Truck": "Toyota Tundra",
+    "Status": "Available"
   }
 ]
