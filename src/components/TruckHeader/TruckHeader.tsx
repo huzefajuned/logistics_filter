@@ -5,11 +5,33 @@ import {
   SearchOutlined,
 } from "@ant-design/icons";
 import { FilterMenuInterface } from "../../App";
-import FilterDrivers from "../FilterDrawer/FilterDrawer";
+import FilterDrawer from "../FilterDrawer/FilterDrawer";
+import React from "react";
 const { Text, Title } = Typography;
 
-const ActiveLoadsHeader = (props: FilterMenuInterface) => {
-  const { isMenuOpen, setIsMenuOpen } = props;
+type TruckHeaderProps = FilterMenuInterface & {
+  onApplyFilter: boolean;
+  setOnApplyFilter: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedTruckStatus: string | null;
+  setSelectedTruckStatus: React.Dispatch<React.SetStateAction<string | null>>;
+  selectedTruckType: string | null;
+  setSelectedTruckType: React.Dispatch<React.SetStateAction<string | null>>;
+  selectedAssingedTruck: string[];
+  setSelectedAssignedTruck: React.Dispatch<React.SetStateAction<string[]>>;
+};
+const TruckHeader: React.FC<TruckHeaderProps> = (props) => {
+  const {
+    isMenuOpen,
+    setIsMenuOpen,
+    onApplyFilter,
+    setOnApplyFilter,
+    selectedTruckStatus,
+    setSelectedTruckStatus,
+    selectedTruckType,
+    setSelectedTruckType,
+    selectedAssingedTruck,
+    setSelectedAssignedTruck
+  } = props;
 
   const handleMenuToggle = () => {
     setIsMenuOpen(true);
@@ -69,9 +91,20 @@ const ActiveLoadsHeader = (props: FilterMenuInterface) => {
           onClick={handleMenuToggle}
         />
       </div>
-      <FilterDrivers isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <FilterDrawer
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        onApplyFilter={onApplyFilter}
+        setOnApplyFilter={setOnApplyFilter}
+        selectedTruckStatus={selectedTruckStatus}
+        setSelectedTruckStatus={setSelectedTruckStatus}
+        selectedTruckType={selectedTruckType}
+        setSelectedTruckType={setSelectedTruckType}
+        selectedAssingedTruck={selectedAssingedTruck}
+        setSelectedAssignedTruck={setSelectedAssignedTruck}
+      />
     </div>
   );
 };
 
-export default ActiveLoadsHeader;
+export default TruckHeader;

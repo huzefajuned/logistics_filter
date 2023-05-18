@@ -63,8 +63,7 @@ const columns: ColumnsType<driversInterface> = [
     ),
   },
 ];
-const ListLoads: React.FC<{ jsonData: driversInterface[] }> = (props) => {
-  console.log(props.jsonData);
+const ListDrivers: React.FC<{ jsonData: driversInterface[] }> = (props) => {
   return (
     <div className=" mt-4 p-2 flex flex-row justify-center z-0">
       <Table
@@ -81,4 +80,4 @@ const ListLoads: React.FC<{ jsonData: driversInterface[] }> = (props) => {
   );
 };
 
-export default ListLoads;
+export default ListDrivers;

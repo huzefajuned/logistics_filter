@@ -8,30 +8,39 @@ import AssingnedTruck from "../AssingnedTruck/AssingnedTruck";
 import TruckType from "../TruckType/TruckType";
 const { Title } = Typography;
 
-const FilterDrivers = (props: FilterMenuInterface) => {
-  const { isMenuOpen, setIsMenuOpen } = props;
+type FilterDrawerProps = FilterMenuInterface & {
+  onApplyFilter: boolean;
+  setOnApplyFilter: React.Dispatch<React.SetStateAction<boolean>>;
+  selectedTruckStatus: string | null;
+  setSelectedTruckStatus: React.Dispatch<React.SetStateAction<string | null>>;
+  selectedTruckType: string | null;
+  setSelectedTruckType: React.Dispatch<React.SetStateAction<string | null>>;
+  selectedAssingedTruck: string[];
+  setSelectedAssignedTruck: React.Dispatch<React.SetStateAction<string[]>>;
+};
+
+const FilterDrawer: React.FC<FilterDrawerProps> = (props) => {
+  const {
+    isMenuOpen,
+    setIsMenuOpen,
+    onApplyFilter,
+    setOnApplyFilter,
+    selectedTruckStatus,
+    setSelectedTruckStatus,
+    selectedTruckType,
+    setSelectedTruckType,
+    selectedAssingedTruck,
+    setSelectedAssignedTruck,
+    
+  } = props;
   const [placement, setPlacement] = useState<string | any>("right");
 
   const handleMenuClose = () => {
     setIsMenuOpen(false);
   };
-  const items: MenuProps["items"] = [
-    {
-      label: <a href="https://www.antgroup.com">1st menu item</a>,
-      key: "0",
-    },
-    {
-      label: <a href="https://www.aliyun.com">2nd menu item</a>,
-      key: "1",
-    },
-    {
-      type: "divider",
-    },
-    {
-      label: "3rd menu item",
-      key: "3",
-    },
-  ];
+  const handleApplyFilter = () => {
+    setOnApplyFilter(!onApplyFilter);
+  };
 
   return (
     <Drawer
@@ -41,7 +50,7 @@ const FilterDrivers = (props: FilterMenuInterface) => {
       closable={false}
       // onClose={onClose}
       open={isMenuOpen}
-      style={{  
+      style={{
         backgroundColor: "white",
         borderTopLeftRadius: "12px",
         borderBottomLeftRadius: "12px",
@@ -62,6 +71,7 @@ const FilterDrivers = (props: FilterMenuInterface) => {
             type="primary"
             className="tracking-wider  font-sans bg-blue-600 h-12 w-36 "
             style={{ fontWeight: "280" }}
+            onClick={handleApplyFilter}
           >
             Apply Filter
           </Button>
@@ -75,12 +85,21 @@ const FilterDrivers = (props: FilterMenuInterface) => {
       </div>
       {/* dropdown menu for status of driver */}
       <div className=" bg-white w-full mt-5 p-2">
-        <TruckStatus />
-        <AssingnedTruck />
-        <TruckType />
+        <TruckStatus
+          selectedTruckStatus={selectedTruckStatus}
+          setSelectedTruckStatus={setSelectedTruckStatus}
+        />
+        <AssingnedTruck
+          selectedAssingedTruck={selectedAssingedTruck}
+          setSelectedAssignedTruck={setSelectedAssignedTruck}
+        />
+        <TruckType
+          selectedTruckType={selectedTruckType}
+          setSelectedTruckType={setSelectedTruckType}
+        />
       </div>
     </Drawer>
   );
 };
 
-export default FilterDrivers;
+export default FilterDrawer;

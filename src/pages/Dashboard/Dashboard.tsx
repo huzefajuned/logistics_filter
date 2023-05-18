@@ -1,17 +1,36 @@
 import React, { useState } from "react";
 import SideMenuIcon from "../../components/SideMenuIcon/SideMenuIcon";
 import SideMenuItem from "../../components/SideMenuItem/SideMenuItem";
-import ActiveLoadsHeader from "../../components/TruckHeader/TruckHeader";
-import ListLoads from "../../components/ListDrivers/ListDrivers";
+import TruckHeader from "../../components/TruckHeader/TruckHeader";
+import ListDrivers from "../../components/ListDrivers/ListDrivers";
 import { FilterMenuInterface, driversInterface } from "../../App";
 
-type DashBoardProps = FilterMenuInterface & {
+interface DashboardProps extends FilterMenuInterface {
+  onApplyFilter: boolean;
+  setOnApplyFilter: React.Dispatch<React.SetStateAction<boolean>>;
   jsonData: driversInterface[];
   setJsonData: React.Dispatch<React.SetStateAction<driversInterface[]>>;
-};
+  selectedTruckStatus: string | null;
+  setSelectedTruckStatus: React.Dispatch<React.SetStateAction<string | null>>;
+  selectedTruckType: string | null;
+  setSelectedTruckType: React.Dispatch<React.SetStateAction<string | null>>;
+  selectedAssingedTruck: string[];
+  setSelectedAssignedTruck: React.Dispatch<React.SetStateAction<string[]>>;
+}
 
-const Dashboard: React.FC<DashBoardProps> = (props) => {
-  const { jsonData, setJsonData } = props;
+const Dashboard: React.FC<DashboardProps> = (props) => {
+  const {
+    jsonData,
+    setJsonData,
+    onApplyFilter,
+    setOnApplyFilter,
+    selectedTruckStatus,
+    setSelectedTruckStatus,
+    selectedTruckType,
+    setSelectedTruckType,
+    selectedAssingedTruck,
+    setSelectedAssignedTruck,
+  } = props;
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
@@ -24,11 +43,19 @@ const Dashboard: React.FC<DashBoardProps> = (props) => {
         <SideMenuItem />
       </div>
       <div className=" w-full m-1">
-        <ActiveLoadsHeader
+        <TruckHeader
           isMenuOpen={isMenuOpen}
           setIsMenuOpen={setIsMenuOpen}
+          onApplyFilter={onApplyFilter}
+          setOnApplyFilter={setOnApplyFilter}
+          selectedTruckStatus={selectedTruckStatus}
+          setSelectedTruckStatus={setSelectedTruckStatus}
+          selectedTruckType={selectedTruckType}
+          setSelectedTruckType={setSelectedTruckType}
+          selectedAssingedTruck={selectedAssingedTruck}
+          setSelectedAssignedTruck={setSelectedAssignedTruck}
         />
-        <ListLoads jsonData={jsonData}  />
+        <ListDrivers jsonData={jsonData} />
       </div>
     </div>
   );
