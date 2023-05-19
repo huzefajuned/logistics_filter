@@ -91,18 +91,7 @@ const TruckHeader: React.FC<TruckHeaderProps> = (props) => {
           onClick={handleMenuToggle}
         />
       </div>
-      <FilterDrawer
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        onApplyFilter={onApplyFilter}
-        setOnApplyFilter={setOnApplyFilter}
-        selectedTruckStatus={selectedTruckStatus}
-        setSelectedTruckStatus={setSelectedTruckStatus}
-        selectedTruckType={selectedTruckType}
-        setSelectedTruckType={setSelectedTruckType}
-        selectedAssingedTruck={selectedAssingedTruck}
-        setSelectedAssignedTruck={setSelectedAssignedTruck}
-      />
+      <FilterDrawer isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
     </div>
   );
 };
