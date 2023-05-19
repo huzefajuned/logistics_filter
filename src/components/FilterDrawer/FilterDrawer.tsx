@@ -1,4 +1,4 @@
-import React, { Children, useState } from "react";
+import React, { useState } from "react";
 import { FilterMenuInterface } from "../../App";
 import { Button, Typography, Checkbox, Radio, Drawer, Menu } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
@@ -8,7 +8,7 @@ const { SubMenu } = Menu;
 interface MenuItem {
   type?: "multiselect" | "radio";
   label?: string;
-  entries?: { label: string; id: string }[];  
+  entries?: { label: string; id: string }[];
 }
 
 const menuOptions: MenuItem[] = [
@@ -64,16 +64,16 @@ const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
   // FOR PLACEMENT OF MENU { LEFT SIDE }
   const [placement, setPlacement] = useState<string | any>("right");
 
+  //  CHECKS CURRENT SLECTED ITEMS
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
   const handleMenuClose = () => {
     setIsMenuOpen(false);
   };
 
-  const handleMenuItemChange = (
+  const handleSelectedInputChange = (
     menuItemlabel: string | any,
-    childItemlabel: string | any,
-    childItemid: string | any
+    childItemlabel: string | any
   ) => {
     setFilterInputs((prevFilterInputs) => {
       const updatedFilterInputs = { ...prevFilterInputs };
@@ -85,14 +85,14 @@ const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
         );
 
         if (itemIndex !== -1) {
-          // Item is already checked, remove it
+          // if input is already available, remove it
           updatedFilterInputs[menuItemlabel].splice(itemIndex, 1);
         } else {
-          // Item is unchecked, add it
+          //  if input is not available, add it
           updatedFilterInputs[menuItemlabel].push(childItemlabel!);
         }
       } else {
-        // Array doesn't exist, create it and add the item
+        //  if Array doesn't exist, create it and add the input
         updatedFilterInputs[menuItemlabel] = [childItemlabel!];
       }
       return updatedFilterInputs;
@@ -122,10 +122,9 @@ const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
                         type="checkbox"
                         className="cursor-pointer  bg-black shadow-none w-4 h-4 mt-1 "
                         onChange={() =>
-                          handleMenuItemChange(
+                          handleSelectedInputChange(
                             menuItem.label,
-                            childItem.label,
-                            childItem.id
+                            childItem.label
                           )
                         }
                       />
@@ -154,11 +153,7 @@ const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
                     style={{ color: "#6B7280" }}
                     value={childItem.label}
                     onChange={() =>
-                      handleMenuItemChange(
-                        menuItem.label,
-                        childItem.label,
-                        childItem.id
-                      )
+                      handleSelectedInputChange(menuItem.label, childItem.label)
                     }
                   >
                     {childItem.label}
