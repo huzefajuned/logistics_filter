@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import { FilterMenuInterface } from "../../App";
 import { Button, Typography, Checkbox, Radio, Drawer, Menu } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
@@ -8,13 +8,13 @@ const { SubMenu } = Menu;
 interface MenuItem {
   type?: "multiselect" | "radio";
   label?: string;
-  entries?: { label: string; id: string }[];
+  entries?: { label: string; id: string }[];  
 }
 
 const menuOptions: MenuItem[] = [
   {
     type: "multiselect",
-    label: " Truck Status",
+    label: "Truck Status",
     entries: [
       { label: "Unavailable", id: "1" },
       { label: "Available", id: "2" },
@@ -44,13 +44,20 @@ const menuOptions: MenuItem[] = [
   },
 ];
 
+interface FilterInputsProps {
+  [key: string]: string[];
+}
 // USE THIS INTERFACE FOR  {isMenuOpen, setIsMenuOpen}
-
 //  FilterMenuInterface = {
 //   isMenuOpen: boolean;
 //   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 // }
 const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
+  // const [onApplyFiter, setOnApplyFilter ] = useState()
+
+  // HERE ALL INPUTS ARE SAVED IN A ARRAY OF OBJECT NAMED- filterInputs---
+  const [filterInputs, setFilterInputs] = useState<FilterInputsProps>({});
+
   // PROPS FOR OPEN AND CLOSE MENU
   const { isMenuOpen, setIsMenuOpen } = props;
 
@@ -63,6 +70,35 @@ const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
     setIsMenuOpen(false);
   };
 
+  const handleMenuItemChange = (
+    menuItemlabel: string | any,
+    childItemlabel: string | any,
+    childItemid: string | any
+  ) => {
+    setFilterInputs((prevFilterInputs) => {
+      const updatedFilterInputs = { ...prevFilterInputs };
+
+      if (updatedFilterInputs[menuItemlabel]) {
+        // Array already exists, check if item is checked or unchecked
+        const itemIndex = updatedFilterInputs[menuItemlabel].indexOf(
+          childItemlabel!
+        );
+
+        if (itemIndex !== -1) {
+          // Item is already checked, remove it
+          updatedFilterInputs[menuItemlabel].splice(itemIndex, 1);
+        } else {
+          // Item is unchecked, add it
+          updatedFilterInputs[menuItemlabel].push(childItemlabel!);
+        }
+      } else {
+        // Array doesn't exist, create it and add the item
+        updatedFilterInputs[menuItemlabel] = [childItemlabel!];
+      }
+      return updatedFilterInputs;
+    });
+  };
+
   //  CREATES SUB-MENUS  FOR MULTIPLE CASES -- { multiselect, radio etc..}
   const renderMenuItems = () => {
     return menuOptions.map((menuItem) => {
@@ -70,22 +106,36 @@ const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
         case "multiselect":
           return (
             <SubMenu
-              key={menuItem.label}
               title={menuItem.label}
-              className="text-black text-lg border-b-2 border-gray-200"
-              style={{ background: "none" }}
+              className="bg-red text-left p-0 relative right-5  text-xl w-full"
+              style={{ color: "#6B7280" }}
             >
-              {menuItem.entries?.map((childItem) => (
-                <Menu.Item key={childItem.id}>
-                  <Checkbox
-                    className="bg-red checked:bg-transparent"
-                    onChange={() => console.log(childItem.label)}
-                    style={{ background: "none" }}
-                  >
-                    {childItem.label}
-                  </Checkbox>
-                </Menu.Item>
-              ))}
+              <div className="">
+                <ul className="w-full mt-2 rounded shadow">
+                  {menuItem.entries?.map((childItem) => (
+                    <li
+                      key={childItem.id}
+                      className="px-4 p-2 ml-4 bg-none shadow-none "
+                      style={{ background: "white" }}
+                    >
+                      <input
+                        type="checkbox"
+                        className="cursor-pointer  bg-black shadow-none w-4 h-4 mt-1 "
+                        onChange={() =>
+                          handleMenuItemChange(
+                            menuItem.label,
+                            childItem.label,
+                            childItem.id
+                          )
+                        }
+                      />
+                      <span className="text-lg tracking-wide font-extralighttext-black p-2    bg-transparent shadow-none">
+                        {childItem.label}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </SubMenu>
           );
         case "radio":
@@ -93,14 +143,23 @@ const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
             <SubMenu
               key={menuItem.label}
               title={menuItem.label}
-              className="text-black text-lg  border-b-2 border-gray-200"
+              style={{ color: "#6B7280", background: "none" }}
+              className="text-black text-lg  relative right-5"
             >
-              <Radio.Group className="flex flex-row justify-between bg-white  m-auto p-2">
+              <Radio.Group className="flex flex-row justify-between   m-auto p-6">
                 {menuItem.entries?.map((childItem) => (
                   <Radio
                     key={childItem.id}
-                    className="bg-white"
+                    className="bg-white text-lg"
+                    style={{ color: "#6B7280" }}
                     value={childItem.label}
+                    onChange={() =>
+                      handleMenuItemChange(
+                        menuItem.label,
+                        childItem.label,
+                        childItem.id
+                      )
+                    }
                   >
                     {childItem.label}
                   </Radio>
@@ -128,11 +187,11 @@ const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
       }}
     >
       {/* HEADER--  */}
-      <div className="flex flex-row w-full items-center justify-around h-24 rounded">
+      <div className="flex flex-row w-full items-center justify-around h-20 rounded">
         <div className="flex flex-row w-full items-center">
           <Title
             level={2}
-            className="text-white text-center justify-center items-center mt-3"
+            className="text-white text-center justify-center items-center ml-2 mt-3"
           >
             Filters
           </Title>
@@ -140,14 +199,14 @@ const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
         <div className="text-center p-2 w-6/12 flex flex-row items-center justify-center">
           <Button
             type="primary"
-            className="tracking-wider font-sans bg-blue-600 h-12 w-36"
+            className="tracking-wider font-sans bg-blue-500 h-11 w-32"
             style={{ fontWeight: "280" }}
-            onClick={() => console.log("filter Applied")}
+            onClick={() => console.log(filterInputs)}
           >
             Apply Filter
           </Button>
           <CloseOutlined
-            className="text-4xl text-black p-1 ml-4 rounded 0 bg-slate-100"
+            className="text-xl text-black p-2 ml-4 rounded 0 bg-slate-100"
             type="default"
             shape="circle"
             onClick={handleMenuClose}
@@ -155,23 +214,10 @@ const FilterDrawer: React.FC<FilterMenuInterface> = (props) => {
         </div>
       </div>
       {/* MENU --  WHERE ALL MENU OPTIONS WILL SHOWN-- */}
-      <div className="bg-white w-full mt-5 p-2">
-        <Menu
-          mode="inline"
-          theme="light"
-          selectedKeys={selectedKeys}
-          style={{
-            backgroundColor: "white",
-            borderTopLeftRadius: "12px",
-            borderBottomLeftRadius: "12px",
-            width: "400px",
-            margin: "auto",
-          }}
-        >
-          {/* THIS FUNCTION RENDERS MENU-ITEMS ISNIDE MENU */}
-          {renderMenuItems()}
-        </Menu>
-      </div>
+      <Menu mode="inline" theme="light" selectedKeys={selectedKeys}>
+        {/* THIS FUNCTION RENDERS MENU-ITEMS ISNIDE MENU */}
+        {renderMenuItems()}
+      </Menu>
     </Drawer>
   );
 };

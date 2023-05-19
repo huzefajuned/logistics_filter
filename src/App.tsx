@@ -43,7 +43,6 @@ function App() {
     []
   );
 
-  console.log("selectedAssingedTruck", selectedAssingedTruck);
   // laoding all Drivers Data once app load
   useEffect(() => {
     const fetchJsonData = async () => {
